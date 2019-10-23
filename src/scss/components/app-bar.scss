@@ -1,0 +1,22 @@
+.app-bar {
+  .tool-bar {
+    display: flex;
+    justify-content: space-between;
+
+    .main-title__wrapper {
+      display: flex;
+
+      .main-title {
+        margin-left: 10px;
+      }
+    }
+
+    .home-button {
+      a {
+        color: $white;
+        display: flex;
+        text-decoration: none;
+      }
+    }
+  }
+}

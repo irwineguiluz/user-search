@@ -1,0 +1,116 @@
+.profile__wrapper {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+
+  @include tablet {
+    align-items: start;
+    flex-direction: row;
+  }
+
+  .profile__avatar {
+    height: 80px;
+    margin-right: 20px;
+    width: 80px;
+    
+    img {
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+
+  .profile__main-info {
+    width: 100%;
+
+    @include tablet {
+      width: 374px;
+    }
+
+    .name__link {
+      color: $black;
+      text-align: center;
+      text-decoration: none;
+
+      @include tablet {
+        text-align: left;
+      }
+
+      .name {
+        margin: 15px 0 0;
+        padding: 0;
+
+        @include tablet {
+          margin: 0;
+        }
+      }
+    }
+
+    .bio {
+      margin: 0;
+    }
+
+    .profile__follow {
+      display: flex;
+      padding-top: 10px;
+      justify-content: space-between;
+
+      @include tablet {
+        justify-content: start;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        span {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
+
+.profile__repos-wrapper {
+  .title {
+    padding: 20px 16px 0;
+  }
+
+  .profile__repos-list {
+    ul {
+      padding: 0;
+
+      .repo-item {
+        text-decoration: none;
+
+        &:link,
+        &:visited,
+        &:hover,
+        &:active {
+          color: $primary;
+        }
+
+        li {
+          transition: 0.3s;
+          
+          &:hover {
+            background-color: $secondary;
+          }
+
+          .repo-item__detail {
+            p {
+              word-wrap: break-word;
+            }
+          }
+        }
+      }
+    }
+  }
+}

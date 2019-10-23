@@ -1,5 +1,14 @@
 @charset "utf-8";
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 @import 'base/variables';
+
+@import 'components/app-bar';
+
+@import 'screens/home';
+@import 'screens/profile';
+
+.general__container {
+  padding-top: 80px;
+}

@@ -1,11 +1,15 @@
-$primary-color: #004e7a;
-$secondary-color: #ffb83c;
+$primary: #004e7a;
+$secondary: #e1f0ff;
+$secondary-light: #f5f5f5;
 
 $white: #ffffff;
-$red: #0000ff;
+$black: #000000;
+
+$shadow: #e6e6e6;
 
 :export {
-  primary: $primary-color;
-  secondary: $secondary-color;
-  red: $red;
+  primary: $primary;
+  secondary: $secondary;
+  black: $black;
+  white: $white;
 }
