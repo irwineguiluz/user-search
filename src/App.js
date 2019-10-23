@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Grid, TextField } from '@material-ui/core';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="sm">
+      <Grid container color="primary" spacing={3}>
+        <Grid item xs={12}>
+          <TextField
+            id="standard-search"
+            label="Search Github User"
+            type="search"
+            margin="normal"
+            color="primary"
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
