@@ -36,6 +36,9 @@ const Template = (props) => {
               <Container className="general__container">
                 {props.children}
               </Container>
+              <div className="author-sign">
+                developed by Irwin Eguiluz
+              </div>
           </Grid>
         </Grid>
       </Container>
