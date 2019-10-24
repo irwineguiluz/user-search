@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import theme from '../../../config/theme';
-import { HomeIcon, GitHubIcon } from '@material-ui/icons';
 import {
   AppBar,
   Toolbar,
@@ -11,6 +10,8 @@ import {
   Grid,
   MuiThemeProvider,
 } from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Template = (props) => {
   return (
@@ -27,7 +28,8 @@ const Template = (props) => {
                       {props.title}
                     </Typography>
                   </div>
-                  {props.homeButton && <div className="home-button">
+                  {
+                    props.homeButton && <div className="home-button">
                       <Link to="/"><HomeIcon /></Link>
                     </div>
                   }
