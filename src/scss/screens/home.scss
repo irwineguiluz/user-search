@@ -1,0 +1,26 @@
+.users__list {
+  .user__item-link {
+    text-decoration: none;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $primary;
+    }
+
+    .user__item {
+      background-color: $secondary-light;
+      box-shadow: 4px 5px 3px -2px $shadow;
+      border-radius: 5px;
+      font-weight: 700;
+      margin: 20px 0;
+      transition: 0.3s;
+      word-break: break-word;
+
+      &:hover {
+        background-color: $secondary;
+      }
+    }
+  }
+}
