@@ -5,10 +5,9 @@
 @import 'base/variables';
 
 @import 'components/app-bar';
+@import 'components/snack-bar';
 
 @import 'screens/home';
 @import 'screens/profile';
 
-.general__container {
-  padding-top: 80px;
-}
+@import 'general';

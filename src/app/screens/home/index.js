@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Template from '../../components/complex/Template';
-import { Link } from 'react-router-dom';
-import {
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  TextField,
-} from '@material-ui/core';
+import ErrorMessage from '../../components/basic/ErrorMessage';
+import SuggestionItem from './components/SuggestionItem';
+import { List, TextField } from '@material-ui/core';
+import { gitHub } from '../../../constants/app';
 
 class Home extends Component {
   constructor() {
@@ -17,26 +12,57 @@ class Home extends Component {
     this.state = {
       keyword: '',
       suggestions: [],
+      showError: false,
+      errorMsg: '',
     }
   }
 
+  handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response.json();
+  }
+
   fetchUsers = (value) => {
-    fetch(`https://api.github.com/search/users?q=${value}`)
-      .then(response => response.json())
+    fetch(`${gitHub.API_URL}/search/users?q=${value}`)
+      .then(this.handleErrors)
       .then(data => {
-        this.setState({ suggestions: data.items })
+        this.setState({
+          suggestions: data.items,
+          errorMsg: '',
+          showError: false,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          suggestions: [],
+          errorMsg: 'Sorry, an error has occurred.',
+          showError: true,
+        });
       });
   }
 
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
-    this.fetchUsers(event.target.value);
+
+    if (event.target.value.length > 0) {
+      this.fetchUsers(event.target.value);
+    } else {
+      this.setState({
+        suggestions: [],
+        errorMsg: '',
+        showError: false,
+      });
+    }
   };
 
   render () {
     const {
       keyword,
       suggestions,
+      showError,
+      errorMsg,
     } = this.state;
 
     return (
@@ -52,17 +78,11 @@ class Home extends Component {
         <div>
           {suggestions.length > 0 && <List className="users__list">
             {suggestions.map((suggestion, index) => (
-              <Link key={index} className="user__item-link" to={`/${suggestion.login}`}>
-                <ListItem className="user__item">
-                  <ListItemAvatar>
-                    <Avatar alt={suggestion.login} src={suggestion.avatar_url} />
-                  </ListItemAvatar>
-                  <ListItemText primary={suggestion.login} secondary={suggestion.bio} />
-                </ListItem>
-              </Link>
+              <SuggestionItem key={index} data={suggestion} />
             ))}
             </List>
           }
+          {showError && <ErrorMessage message={errorMsg} />}
         </div>
       </Template>
     );

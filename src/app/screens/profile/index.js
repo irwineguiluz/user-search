@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Paper,
-  List,
-  ListItem,
-  ListItemText
-} from '@material-ui/core';
+import { Paper, List } from '@material-ui/core';
 import Template from '../../components/complex/Template';
+import RepoItem from './components/RepoItem';
+import { gitHub } from '../../../constants/app';
 
 class Profile extends Component {
   constructor(props) {
@@ -18,7 +15,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://api.github.com/users/${this.props.match.params.username}`)
+    fetch(`${gitHub.API_URL}/users/${this.props.match.params.username}`)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -29,7 +26,7 @@ class Profile extends Component {
         console.log(error);
       });
 
-    fetch(`https://api.github.com/users/${this.props.match.params.username}/repos`)
+    fetch(`${gitHub.API_URL}/users/${this.props.match.params.username}/repos`)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -83,21 +80,7 @@ class Profile extends Component {
           <div className="profile__repos-list">
             {profileRepos.length > 0 && <List>
               {profileRepos.map((repo, index) => (
-                <a
-                  className="repo-item"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={repo.html_url}
-                  key={index}
-                >
-                  <ListItem>
-                    <ListItemText
-                      className="repo-item__detail"
-                      primary={repo.name}
-                      secondary={repo.description}
-                    />
-                  </ListItem>
-                </a>
+                <RepoItem key={index} data={repo} />
               ))}
             </List>}
           </div>
