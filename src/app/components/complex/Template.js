@@ -28,11 +28,9 @@ const Template = (props) => {
                       {props.title}
                     </Typography>
                   </div>
-                  {
-                    props.homeButton && <div className="home-button">
-                      <Link to="/"><HomeIcon /></Link>
-                    </div>
-                  }
+                  {props.homeButton && <div className="home-button">
+                    <Link to="/"><HomeIcon /></Link>
+                  </div>}
                 </Toolbar>
               </AppBar>
               <Container className="general__container">
