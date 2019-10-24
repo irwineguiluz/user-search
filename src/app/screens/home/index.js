@@ -47,7 +47,12 @@ class Home extends Component {
     this.setState({[name]: event.target.value});
 
     if (event.target.value.length > 0) {
-      this.fetchUsers(event.target.value);
+      var delay = 1000;
+      clearTimeout(this.inputTimer);
+
+      this.inputTimer = setTimeout(() => {
+        this.fetchUsers(this.state.keyword);
+      }, delay);
     } else {
       this.setState({
         suggestions: [],
